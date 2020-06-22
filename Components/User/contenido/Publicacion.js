@@ -7,9 +7,9 @@ export default function Publicacion(){
  
     return (
         <View style={styles.div}>
-            <ImageBackground source={require(image)} style={styles.image}>
+            {/* <ImageBackground source={require(image)} style={styles.image}>
                 
-            </ImageBackground>
+            </ImageBackground> */}
             <Text style={styles.text}>
                 [1]  Descripcion...
             </Text>

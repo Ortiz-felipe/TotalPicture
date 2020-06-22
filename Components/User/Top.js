@@ -11,13 +11,13 @@ export default function Top(){
     return (
 
         <View style={styles.top}>
-            <ImageBackground source={require(image)} style={styles.image}>
+            {/* <ImageBackground source={require(image)} style={styles.image}>
                     <View style={styles.contenido}>
                         <Text style={styles.text}>
                             Foto de Perfil...
                         </Text>
                     </View>
-            </ImageBackground>
+            </ImageBackground> */}
             <BarTop/>
         </View>
     );

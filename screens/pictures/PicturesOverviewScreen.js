@@ -1,17 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import User from '../../Components/User/User';
 
 const PicturesOverviewScreen = props => {
     return(
-        <View>
-            <Text>The Pictures Overview Screen</Text>
-            <Text>Mostrar como Cards cada una de las Fotos</Text>
+        <View style={{ backgroundColor: "black", flex:1 }}>
+            <User/>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-
 });
 
 export default PicturesOverviewScreen;

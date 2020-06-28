@@ -7,6 +7,8 @@ import AuthScreen from '../screens/user/AuthScreen';
 import StartupScreen from '../screens/StartupScreen';
 import { Ionicons } from '@expo/vector-icons';
 import * as authActions from '../store/actions/auth';
+import PictureDetailScreen from '../screens/pictures/PictureDetailScreen';
+import NewPictureScreen from '../screens/pictures/NewPictureScreen';
 
 const defaultNavOptions = {
     headerStyle: {
@@ -22,7 +24,10 @@ const defaultNavOptions = {
 };
 
 const TotalPictureNavigator = createStackNavigator({
-    PicturesOverview: PicturesOverviewScreen
+    PicturesOverview: PicturesOverviewScreen,
+    PictureDetail: PictureDetailScreen,
+    NewPicture: NewPictureScreen
+
 }, {defaultNavOptions: defaultNavOptions});
 
 const AuthNavigator = createStackNavigator({

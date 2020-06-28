@@ -6,10 +6,12 @@ import * as Font from 'expo-font';
 import ReduxThunk from 'redux-thunk';
 
 import authReducer from './store/reducers/auth';
+import picturesReducer from './store/reducers/pictures';
 import NavigationContainer from './navigation/NavigationContainer';
 
 const rootReducer = combineReducers({  
-  auth: authReducer
+  auth: authReducer,
+  pictures: picturesReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

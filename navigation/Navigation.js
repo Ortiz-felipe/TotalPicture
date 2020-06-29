@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createCompatNavigatorFactory } from '@react-navigation/compat';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationActions } from '@react-navigation/compat';
-
+import { Picture } from '../Components/Picture/Picture'
 import { Icon } from 'react-native-vector-icons';
 import { User } from '../Components/User/User'
 
@@ -30,12 +30,10 @@ function TakePicture(){
         </View>
     )
 }
-function Picture(){
+function PictureScreen(){
     return (
         <View style={styles.container}>
-            <Text>
-                Picture screen
-            </Text>
+           <Picture/>
         </View>
     )
 }
@@ -89,7 +87,7 @@ const TabNavigator = createCompatNavigatorFactory(createStackNavigator)(
             }
         },
         Picture: { 
-            screen: Picture,
+            screen: PictureScreen,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) => (
                     <View>

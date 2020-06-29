@@ -33,13 +33,11 @@ export default function User(){
         require("../../images/horizontal_8.jpg"),
         require("../../images/horizontal_9.jpg")
     ];
-    var imgV = 0;
-    var imgH = 0;
-
+    
     //** En este metodo se tendria que ir a buscar las fotos y cargarlas en el render. **//
-    const vertical = (_key) => {
+    const vertical = (imgV) => {
         return (
-            <TouchableOpacity onPress={showToast}  key={_key}>
+            <TouchableOpacity onPress={goToPictureV(imgV)}  key={imgV}>
                 <View style={styles.mediaImagenContainerVertical}>
                     <Image source={fotosV[imgV]} style={styles.image} resizeMode="cover"></Image>
                     <Text 
@@ -51,9 +49,9 @@ export default function User(){
             </TouchableOpacity>
         )
     };
-    const horizontal = (_key) => {
+    const horizontal = (imgH) => {
         return (
-            <TouchableOpacity onPress={showToast}  key={_key}>
+            <TouchableOpacity onPress={goToPictureH(imgH)}  key={imgH}>
                 <View style={styles.mediaImagenContainerHorizontal}>
                     <Image source={fotosH[imgH]} 
                         style={styles.image} resizeMode="cover"
@@ -67,12 +65,25 @@ export default function User(){
             </TouchableOpacity>
         )
     };
+
+    const goToPictureH = () => {
+            navigation.navigate('Details', {
+              itemId: 86,
+              otherParam: fotosH[imgH],
+            });
+    }
+    const goToPictureV = () => {
+        navigation.navigate('Picture', {
+          itemId: 86,
+          otherParam: fotosV[imgV],
+        });
+    }
     
     const llenarPublicacionesVerticales = () => {
         var array = [];
         for (var i = 0; i < 7; i++){
             array.push(vertical(i));
-            imgV++;
+            
         }
         return array;
     };
@@ -81,7 +92,7 @@ export default function User(){
         var array = [];
         for (var i = 1; i <= 9; i++){
             array.push(horizontal(i));
-            imgH++;
+     
         }
         return array;
     };

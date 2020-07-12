@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Provider as PaperProvider } from 'react-native-paper'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { AppLoading } from 'expo';
@@ -6,9 +7,9 @@ import * as Font from 'expo-font';
 import ReduxThunk from 'redux-thunk';
 
 import authReducer from './store/reducers/auth';
-import NavigationContainer from './navigation/NavigationContainer';
+import AppNavigator from './navigation/AppNavigator';
 
-const rootReducer = combineReducers({  
+const rootReducer = combineReducers({
   auth: authReducer
 });
 
@@ -27,18 +28,20 @@ export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
 
   if (!fontLoaded) {
-    return(
-      <AppLoading 
-        startAsync={fetchFonts} 
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
         onFinish={() => {
           setFontLoaded(true);
         }} />
-      );
+    );
   }
 
   return (
-    <Provider store={store}>
-      <NavigationContainer />
-    </Provider>
+    <PaperProvider>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    </PaperProvider>
   );
 }

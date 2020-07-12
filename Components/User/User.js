@@ -1,15 +1,15 @@
 // https://www.youtube.com/watch?v=Zw7FkwXotxg
-import { StackNavigator } from 'react-navigation';
-import React, { useState }from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, ToastAndroid, Button,
+import React, { useState } from 'react';
+import {
+    StyleSheet, Text, View, SafeAreaView, Image, ScrollView, ToastAndroid, Button,
     TouchableOpacity
-} from 'react-native'; 
+} from 'react-native';
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { StackNavigator } from 'react-navigation';
+// import { StackNavigator } from 'react-navigation';
 
 
 
-export default function User(){
+const User = props => {
 
     var [followers, setFollowers] = useState(55);
     var [pictures, setPictures] = useState(999);
@@ -40,82 +40,81 @@ export default function User(){
     var imgH = 0;
 
     //** En este metodo se tendria que ir a buscar las fotos y cargarlas en el render. **//
-    const vertical = (_key) => {
-        return (
-            <TouchableOpacity onPress={ pictureV(fotosV[imgV]) }  key={_key}>
-                <View style={styles.mediaImagenContainerVertical}>
-                    <Image source={fotosV[imgV]} style={styles.image} resizeMode="cover"></Image>
-                    <Text 
-                        style={{backgroundColor: "black", color: "white", textAlign: "center"}}
-                    > 
-                        Description... 
-                    </Text>
-                </View>
-            </TouchableOpacity>
-        )
-    };
-    const horizontal = (_key) => {
-        return (
-            <TouchableOpacity onPress={pictureH(fotosH[imgH])}  key={_key}>
-                <View style={styles.mediaImagenContainerHorizontal}>
-                    <Image source={fotosH[imgH]} 
-                        style={styles.image} resizeMode="cover"
-                    ></Image>
-                    <Text 
-                        style={{backgroundColor: "black", color: "white", textAlign: "center"}}
-                    > 
-                        Description... 
-                    </Text>
-                </View>
-            </TouchableOpacity>
-        )
-    };
-    
-    const llenarPublicacionesVerticales = () => {
-        var array = [];
-        for (var i = 0; i < 7; i++){
-            array.push(vertical(i));
-            imgV++;
-        }
-        return array;
-    };
+    // const vertical = (_key) => {
+    //     return (
+    //         <TouchableOpacity onPress={pictureV(fotosV[imgV])} key={_key}>
+    //             <View style={styles.mediaImagenContainerVertical}>
+    //                 <Image source={fotosV[imgV]} style={styles.image} resizeMode="cover"></Image>
+    //                 <Text
+    //                     style={{ backgroundColor: "black", color: "white", textAlign: "center" }}
+    //                 >
+    //                     Description...
+    //                 </Text>
+    //             </View>
+    //         </TouchableOpacity>
+    //     )
+    // };
+    // const horizontal = (_key) => {
+    //     return (
+    //         <TouchableOpacity onPress={pictureH(fotosH[imgH])} key={_key}>
+    //             <View style={styles.mediaImagenContainerHorizontal}>
+    //                 <Image source={fotosH[imgH]}
+    //                     style={styles.image} resizeMode="cover"
+    //                 ></Image>
+    //                 <Text
+    //                     style={{ backgroundColor: "black", color: "white", textAlign: "center" }}
+    //                 >
+    //                     Description...
+    //                 </Text>
+    //             </View>
+    //         </TouchableOpacity>
+    //     )
+    // };
 
-    const llenarPublicacionesHorizontales = () => {
-        var array = [];
-        for (var i = 1; i <= 9; i++){
-            array.push(horizontal(i));
-            imgH++;
-        }
-        return array;
-    };
+    // const llenarPublicacionesVerticales = () => {
+    //     var array = [];
+    //     for (var i = 0; i < 7; i++) {
+    //         array.push(vertical(i));
+    //         imgV++;
+    //     }
+    //     return array;
+    // };
 
-    const pictureV = (navImgV) => {
-        props.navigation.navigate(
-            'DetailPage',
-            navImgV
-          );
-        }
-    };
-    const pictureH = (navImgH) => {
-        props.navigation.navigate(
-            'DetailPage',
-            navImgH
-          );
-        }
-    };
+    // const llenarPublicacionesHorizontales = () => {
+    //     var array = [];
+    //     for (var i = 1; i <= 9; i++) {
+    //         array.push(horizontal(i));
+    //         imgH++;
+    //     }
+    //     return array;
+    // };
 
-    const showToast = () => {
-        setFollowers(followers++);
-        ToastAndroid.show("Following Uesr followers: " + followers, ToastAndroid.SHORT);
-    }
-    
+    // const pictureV = (navImgV) => {
+    //     props.navigation.navigate(
+    //         'Details',
+    //         navImgV
+    //     );
+    // }
+
+    // const pictureH = (navImgH) => {
+    //     props.navigation.navigate(
+    //         'Details',
+    //         navImgH
+    //     );
+    // };
+
+    // const showToast = () => {
+    //     setFollowers(followers++);
+    //     ToastAndroid.show("Following Uesr followers: " + followers, ToastAndroid.SHORT);
+    // };
+
     // f() => te lleva a donde esta a la publicacion
 
     // f() => seguir usuario 
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}> 
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.titleBar}>
                     <Ionicons name="ios-arrow-back" size={24} color="#52575D"></Ionicons>
                     <Ionicons name="md-more" size={24} color="#52575D"></Ionicons>
@@ -128,58 +127,59 @@ export default function User(){
                     <View style={styles.dm}>
                         <MaterialIcons name="chat" size={18} color="#DFD8C8"></MaterialIcons>
                     </View>
-                    <TouchableOpacity  style={styles.active} onPress={() => showToast()}>
+                    <TouchableOpacity style={styles.active} onPress={() => showToast()}>
                         <View style={styles.add}>
                             <Ionicons name="ios-add" size={48} color="#DFD8C8"
-                                style={{marginTop: 6, marginLeft: 2}}
+                                style={{ marginTop: 6, marginLeft: 2 }}
                             ></Ionicons>
                         </View>
                     </TouchableOpacity>
 
                     <View style={styles.infoContainer}>
                         <Text
-                            style={[styles.text, { fontWeight: "200", fontSize: 36}]}
+                            style={[styles.text, { fontWeight: "200", fontSize: 36 }]}
                         >Username</Text>
                         <Text
-                            style={[styles.text, {color: "red", fontSize: 14}]}
+                            style={[styles.text, { color: "red", fontSize: 14 }]}
                         >Photographer</Text>
                     </View>
                 </View>
-                
+
                 <View >
-                   <View style={styles.statsContainer}>
-                       <View style={styles.statsBox}>
-                           <Text style={[styles.text, { fontSize: 24 }]}>{followers}</Text>
-                           <Text style={[styles.text, styles.subText]}>Followers</Text>
-                       </View>
-                       <View style={[styles.statsBox, 
-                            { borderColor: "#DFD8C8", borderLeftWidth: 1, borderRightWidth: 1}]}
+                    <View style={styles.statsContainer}>
+                        <View style={styles.statsBox}>
+                            <Text style={[styles.text, { fontSize: 24 }]}>{followers}</Text>
+                            <Text style={[styles.text, styles.subText]}>Followers</Text>
+                        </View>
+                        <View style={[styles.statsBox,
+                        { borderColor: "#DFD8C8", borderLeftWidth: 1, borderRightWidth: 1 }]}
                         >
-                           <Text style={[styles.text, { fontSize: 24 }]}>{pictures}</Text>
-                           <Text style={[styles.text, styles.subText]}>PICTURES</Text>
-                       </View>
-                       <View style={styles.statsBox}>
-                           <Text style={[styles.text, { fontSize: 24 }]}>{following}</Text>
-                           <Text style={[styles.text, styles.subText]}>Following</Text>
-                       </View>
-                   </View>
+                            <Text style={[styles.text, { fontSize: 24 }]}>{pictures}</Text>
+                            <Text style={[styles.text, styles.subText]}>PICTURES</Text>
+                        </View>
+                        <View style={styles.statsBox}>
+                            <Text style={[styles.text, { fontSize: 24 }]}>{following}</Text>
+                            <Text style={[styles.text, styles.subText]}>Following</Text>
+                        </View>
+                    </View>
                 </View>
 
-                
-                <View style={{ marginTop: 32 }}>
+
+                {/* <View style={{ marginTop: 32 }}>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                        
-                        { llenarPublicacionesVerticales() }
+
+                        {llenarPublicacionesVerticales()}
 
                     </ScrollView>
                 </View>
 
-                { llenarPublicacionesHorizontales() }
+                {llenarPublicacionesHorizontales()} */}
 
             </ScrollView>
         </SafeAreaView>
-    )
+    );
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -187,17 +187,17 @@ const styles = StyleSheet.create({
         //backgroundColor: "#fff"
     },
     text: {
-        fontFamily: "sans-serif-condensed",
+        fontFamily: "open-sans",
         fontSize: 24,
         color: "white"
     },
     subText: {
         fontSize: 12,
-        fontWeight: "500" 
+        fontWeight: "500"
     },
     image: {
         flex: 1,
-        width:undefined,
+        width: undefined,
         height: undefined
     },
     titleBar: {//-----------//
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     active: {
-       
+
     },
     add: {
         backgroundColor: "#41444B",
@@ -241,40 +241,42 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 16
     },
-    
+
     statsContainer: {
-       flexDirection: "row",
-       alignSelf: "center",
-       marginTop: 32
+        flexDirection: "row",
+        alignSelf: "center",
+        marginTop: 32
     },
     statsBox: {
         alignItems: "center",
         flex: 1
     },
-    
-    mediaImagenContainerVertical:{
+
+    mediaImagenContainerVertical: {
         width: 100,
-        height:  200,
+        height: 200,
         borderRadius: 12,
         overflow: "hidden",
         marginHorizontal: 10,
         backgroundColor: "black"
     },
-    mediaImagenContainerHorizontal:{
+    mediaImagenContainerHorizontal: {
         width: 300,
-        height:  150,
+        height: 150,
         borderRadius: 12,
         overflow: "hidden",
         alignSelf: "center",
         marginTop: 20,
         backgroundColor: "black"
     }
-})
+});
+
+export default User;
 
 
 /**
  * Cada publicacion te tiene que llevar a la pnatalla Picture con la publicacion cargada
- * 
+ *
  * Funcionamiento de botones
- * 
+ *
  */

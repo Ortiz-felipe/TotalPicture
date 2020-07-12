@@ -46,7 +46,7 @@ export const signup = (email, password) => {
 
         const responseData = await response.json();
 
-        dispatch(authenticate(responseData.localId, responseData.token, parseInt(responseData.expiresIn) * 1000));
+        dispatch(authenticate(responseData.localId, responseData.idToken, parseInt(responseData.expiresIn) * 1000));
 
         const expirationDate = new Date(new Date().getTime() + parseInt(responseData.expiresIn) * 1000)
         saveDataToStorage(responseData.idToken, response.localId, expirationDate);
@@ -85,7 +85,7 @@ export const login = (email, password) => {
 
         
 
-        dispatch(authenticate(responseData.localId, responseData.token, parseInt(responseData.expiresIn) * 1000));
+        dispatch(authenticate(responseData.localId, responseData.idToken, parseInt(responseData.expiresIn) * 1000));
 
         const expirationDate = new Date(new Date().getTime() + parseInt(responseData.expiresIn) * 1000)
         saveDataToStorage(responseData.idToken, response.localId, expirationDate);

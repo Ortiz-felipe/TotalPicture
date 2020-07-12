@@ -7,8 +7,8 @@ import Constants from 'expo-constants';
 
 export default function Picture() {
 
-  var imageH = require(props.navigation.state.params.fotoH);
-  var imageV = require(props.navigation.state.params.fotoV);
+  var imageH = require('../../images/horizontal_3.jpg');
+  var imageV = require('../../images/foto3.jpeg');
 
  
 /*

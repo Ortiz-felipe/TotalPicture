@@ -1,12 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import User from '../../Components/User/User';
+import { NavigationContainer } from '@react-navigation/native';
+//import { createDrawerNavigator } from '@react-navigation/drawer';
+//import { Drawer } from 'react-native-paper';
+import { MainTabScreen } from '../../navigation/NavigationTab';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+const Drawer = createDrawerNavigator();
+
 
 const PicturesOverviewScreen = props => {
+
     return(
-        <View style={{ backgroundColor: "black", flex:1 }}>
-            <User/>
-        </View>
+        <NavigationContainer>
+            <Drawer.Navigator initialRoutName="Home">
+                <Drawer.Screen name="Home" component={MainTabScreen} />
+            </Drawer.Navigator>
+        </NavigationContainer>
     );
 }
 

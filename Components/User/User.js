@@ -4,8 +4,6 @@ import React, { useState }from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, ToastAndroid, Button,
     TouchableOpacity
 } from 'react-native'; 
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { StackNavigator } from 'react-navigation';
 
 
 
@@ -42,7 +40,7 @@ export default function User(){
     //** En este metodo se tendria que ir a buscar las fotos y cargarlas en el render. **//
     const vertical = (_key) => {
         return (
-            <TouchableOpacity onPress={ pictureV(fotosV[imgV]) }  key={_key}>
+            <TouchableOpacity key={_key}>
                 <View style={styles.mediaImagenContainerVertical}>
                     <Image source={fotosV[imgV]} style={styles.image} resizeMode="cover"></Image>
                     <Text 
@@ -56,7 +54,7 @@ export default function User(){
     };
     const horizontal = (_key) => {
         return (
-            <TouchableOpacity onPress={pictureH(fotosH[imgH])}  key={_key}>
+            <TouchableOpacity  key={_key}>
                 <View style={styles.mediaImagenContainerHorizontal}>
                     <Image source={fotosH[imgH]} 
                         style={styles.image} resizeMode="cover"
@@ -89,20 +87,8 @@ export default function User(){
         return array;
     };
 
-    const pictureV = (navImgV) => {
-        props.navigation.navigate(
-            'DetailPage',
-            navImgV
-          );
-        }
-    };
-    const pictureH = (navImgH) => {
-        props.navigation.navigate(
-            'DetailPage',
-            navImgH
-          );
-        }
-    };
+   
+   
 
     const showToast = () => {
         setFollowers(followers++);

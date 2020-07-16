@@ -9,7 +9,7 @@ const Icon = props => {
     const iconColor = props.color;
 
     return(
-        <Ionicons style={styles.iconStyle} name={iconName} size={iconSize} color={iconColor}/>
+        <Ionicons style={props.style ? props.stlye : styles.iconStyle} name={iconName} size={iconSize} color={iconColor}/>
     );
 }
 

@@ -5,9 +5,10 @@ import { Provider } from 'react-redux';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import ReduxThunk from 'redux-thunk';
-
+import ENV from './env';
 import authReducer from './store/reducers/auth';
-import AppNavigator from './navigation/AppNavigator';
+import NavigationContainer from './navigation/NavigationContainer';
+import Fire from 'firebase';
 
 const rootReducer = combineReducers({
   auth: authReducer
@@ -20,12 +21,12 @@ const fetchFonts = () => {
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf')
   })
-}
-
+};
 
 export default function App() {
 
   const [fontLoaded, setFontLoaded] = useState(false);
+  
 
   if (!fontLoaded) {
     return (
@@ -38,10 +39,8 @@ export default function App() {
   }
 
   return (
-    <PaperProvider>
-      <Provider store={store}>
-        <AppNavigator />
-      </Provider>
-    </PaperProvider>
+    <Provider store={store}>
+      <NavigationContainer />
+    </Provider>
   );
 }
